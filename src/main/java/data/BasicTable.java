@@ -1,32 +1,30 @@
 package data;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
-public class BasicTable<ApartmentsTableRow extends BasicTableRow> implements Table<ApartmentsTableRow> {
+public class BasicTable<T extends BasicTableRow> {
 
-    private List<ApartmentsTableRow> apartmentsRows;
+    @Setter @Getter
+    private String tableName;
 
-    public List<ApartmentsTableRow> getRowList() {
-        return apartmentsRows;
+    private List<T> tableRowList;
+
+    public List<T> getRowList() {
+        return tableRowList;
     }
 
-    public void setRowList(List<ApartmentsTableRow> rowList) {
-        apartmentsRows = rowList;
+    public void setRowList(List<T> rowList) {
+        tableRowList = rowList;
     }
 
-    public void addRowList(List<ApartmentsTableRow> rowList) {
-
+    public void addRowList(List<T> rowList) {
+        for (T row : rowList) tableRowList.add(row);
     }
 
-    public void addRow(ApartmentsTableRow row) {
-
-    }
-
-    public void updateRow(int index, ApartmentsTableRow row) {
-
-    }
-
-    public void removeRow(int index) {
-
+    public void addRow(T row) {
+        tableRowList.add(row);
     }
 }

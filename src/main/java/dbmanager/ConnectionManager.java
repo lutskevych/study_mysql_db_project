@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
     private static DbProperties dbProperties = new DbProperties();
-    public static Connection connection;
+    private static Connection connection;
 
     private static void setConnection() {
         try {

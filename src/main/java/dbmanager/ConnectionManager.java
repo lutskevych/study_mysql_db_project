@@ -1,21 +1,23 @@
 package dbmanager;
 
-import utils.DbProperties;
+import org.aeonbits.owner.ConfigFactory;
+import utils.DataBaseProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-    private static DbProperties dbProperties = new DbProperties();
     private static Connection connection;
+    private static DataBaseProperties dbProperties;
 
     private static void setConnection() {
         try {
+            dbProperties = ConfigFactory.create(DataBaseProperties.class);
             connection = DriverManager.getConnection(
-                    dbProperties.getUrl(),
-                    dbProperties.getUserName(),
-                    dbProperties.getPassword());
+                    dbProperties.url(),
+                    dbProperties.user(),
+                    dbProperties.password());
         } catch (SQLException e) {
             e.printStackTrace();
         }

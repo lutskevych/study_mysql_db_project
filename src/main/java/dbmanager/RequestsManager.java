@@ -3,6 +3,7 @@ package dbmanager;
 import com.mysql.jdbc.CallableStatement;
 import data.ApartmentsTableRow;
 import data.BasicTable;
+import utils.ApartmentsFilter;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +34,11 @@ public class RequestsManager {
             e.printStackTrace();
         }
         return apartmentsTable;
+    }
+
+    private String generateQuery(ApartmentsFilter filter) {
+//        TODO add abstract Filter
+        return null;
     }
 
 }

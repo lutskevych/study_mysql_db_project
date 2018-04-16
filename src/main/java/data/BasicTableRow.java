@@ -1,8 +1,9 @@
 package data;
 
-/**
- * Created by Виктор on 10.04.2018.
- */
+import lombok.Getter;
+import lombok.Setter;
+
 public abstract class BasicTableRow {
+    @Setter @Getter
     protected int id;
 }

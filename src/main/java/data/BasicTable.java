@@ -1,16 +1,24 @@
 package data;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
 public class BasicTable<T extends BasicTableRow> {
 
-    @Setter @Getter
-    private String tableName;
-
+    private List<String> headers;
     private List<T> tableRowList;
+
+    public BasicTable(List<String> headers, List<T> tableRowList) {
+        this.headers = headers;
+        this.tableRowList = tableRowList;
+    }
+
+    public void setHeaders(List<String> headers) {
+        this.headers = headers;
+    }
+
+    public List<String> getHeaders() {
+        return headers;
+    }
 
     public List<T> getRowList() {
         return tableRowList;
@@ -26,5 +34,9 @@ public class BasicTable<T extends BasicTableRow> {
 
     public void addRow(T row) {
         tableRowList.add(row);
+    }
+
+    public void printTable() {
+//        TODO
     }
 }

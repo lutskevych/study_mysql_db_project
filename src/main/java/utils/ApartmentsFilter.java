@@ -1,9 +1,11 @@
 package utils;
 
+import lombok.Getter;
+
 import java.util.Map;
 
 public class ApartmentsFilter {
-
+    @Getter
     private Map<String, String> map;
 
     public static Builder newBuilder() {

@@ -41,13 +41,23 @@ public class RequestsManager {
         return generateResultTable(resultSet);
     }
 
+    public BasicTable<ApartmentsTableRow> selectAllFromApartments() {
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM apartments");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return generateResultTable(resultSet);
+    }
+
     private String generateSelectQueryWithEqualsCondition(String tableName, Map<String, String> parameters) {
         Object[] columns = parameters.keySet().toArray();
-        String query = format("SELECT * FROM %s WHERE %s = %s", tableName, columns[0], parameters.get(columns[0]));
+        String query = format("SELECT * FROM %s WHERE %s = '%s'", tableName, columns[0], parameters.get(columns[0]));
         StringBuilder sb = new StringBuilder(query);
         if (columns.length > 1) {
             for (int i = 1; i < columns.length; i++) {
-                sb.append(" AND ").append(columns[i]).append(" = ").append(parameters.get(columns[i]));
+                sb.append(" AND ").append(columns[i]).append(" = '").append(parameters.get(columns[i])).append("'");
             }
         }
         return sb.append(";").toString();
@@ -59,7 +69,7 @@ public class RequestsManager {
         List<ApartmentsTableRow> rows = new ArrayList<ApartmentsTableRow>();
         try {
             metaData = resultSet.getMetaData();
-            for (int i = 0; i < metaData.getColumnCount(); i++) {
+            for (int i = 1; i <= metaData.getColumnCount(); i++) {
                 headers.add(metaData.getColumnName(i));
             }
             while (resultSet.next()) {

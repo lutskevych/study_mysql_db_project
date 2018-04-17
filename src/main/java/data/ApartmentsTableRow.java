@@ -12,4 +12,10 @@ public class ApartmentsTableRow extends BasicTableRow {
     private float square;
     private int roomNumbers;
     private int price;
+
+    @Override
+    public void printRow() {
+        String format = "| %-15s| %-15s| %-15s| %-15s| %-15s| %-15s| %-15s| %-15s|\n";
+        System.out.printf(format, id, district, street, building, flat, square, roomNumbers, price);
+    }
 }

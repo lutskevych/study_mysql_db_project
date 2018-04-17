@@ -37,6 +37,14 @@ public class BasicTable<T extends BasicTableRow> {
     }
 
     public void printTable() {
-//        TODO
+        System.out.print("|");
+        for (String columnName : headers) {
+            System.out.printf(" %-15s|", columnName.toUpperCase());
+        }
+        System.out.println();
+        for (BasicTableRow row : tableRowList) {
+            row.printRow();
+        }
+
     }
 }

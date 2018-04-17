@@ -6,4 +6,6 @@ import lombok.Setter;
 public abstract class BasicTableRow {
     @Setter @Getter
     protected int id;
+
+    public abstract void printRow();
 }

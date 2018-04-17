@@ -2,6 +2,7 @@ package utils;
 
 import lombok.Getter;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ApartmentsFilter {
@@ -9,7 +10,11 @@ public class ApartmentsFilter {
     private Map<String, String> map;
 
     public static Builder newBuilder() {
-        return new ApartmentsFilter().newBuilder();
+        return new ApartmentsFilter().new Builder();
+    }
+
+    public ApartmentsFilter() {
+        map = new HashMap<String, String>();
     }
 
     public class Builder {
@@ -40,7 +45,7 @@ public class ApartmentsFilter {
         }
 
         public Builder setRoomNumbers(String roomNumbers) {
-            map.put("roomNumbers", roomNumbers);
+            map.put("number_of_rooms", roomNumbers);
             return this;
         }
 
